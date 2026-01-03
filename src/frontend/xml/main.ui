@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="flashcard">
+	<requires lib="gtk" version="4.0"/>
+    <object class="GtkWindow" id="main_window">
+        <property name="name">main_window</property>
+        <property name="default-width">600</property>
+        <property name="default-height">400</property>
+        <property name="title">Flashcard</property>
+        <property name="resizable">FALSE</property>
+        <child>
+            <object class="GtkBox" id="root_box">
+                <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
+                <property name="name">root_box</property>
+                <property name="width-request">500</property>
+                <property name="height-request">100</property>
+                <property name="hexpand">FALSE</property>
+                <property name="vexpand">FALSE</property>
+
+                <child>
+                    <object class="GtkButton" id="new_set">
+                        <property name="label">New set</property>
+                        <property name="hexpand">TRUE</property>
+                        <property name="vexpand">FALSE</property>
+                        <property name="name">new_set</property>
+                        <signal name="clicked" handler="new_set_impl"/>
+                        <property name="margin-start">20</property>
+                        <property name="margin-end">20</property>
+                        <property name="margin-top">20</property>
+                        <property name="margin-bottom">20</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkButton" id="load_set">
+                        <property name="label">Open a set</property>
+                        <property name="hexpand">TRUE</property>
+                        <property name="vexpand">FALSE</property>
+                        <property name="name">load_set</property>
+                        <signal name="clicked" handler="load_set_impl"/>
+                        <property name="margin-start">20</property>
+                        <property name="margin-end">20</property>
+                        <property name="margin-top">20</property>
+                        <property name="margin-bottom">20</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkButton" id="exit">
+                        <property name="label">Exit</property>
+                        <property name="hexpand">TRUE</property>
+                        <property name="vexpand">FALSE</property>
+                        <property name="name">load_set</property>
+                        <signal name="clicked" handler="exit_impl"/>
+                        <property name="margin-start">20</property>
+                        <property name="margin-end">20</property>
+                        <property name="margin-top">20</property>
+                        <property name="margin-bottom">20</property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkLabel" id="flashcard_id">
+                        <property name="hexpand">TRUE</property>
+                        <property name="vexpand">FALSE</property>
+                        <property name="name">flashcard_id</property>
+                        <property name="label">Flashcard 1</property>
+                        <property name="visible">FALSE</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkTextView" id="input">
+                        <property name="hexpand">TRUE</property>
+                        <property name="vexpand">TRUE</property>
+                        <property name="wrap-mode">GTK_WRAP_WORD</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="name">input</property>
+                        <property name="margin-start">50</property>
+                        <property name="margin-end">50</property>
+                        <property name="margin-top">50</property>
+                        <property name="margin-bottom">50</property>
+                        <property name="width-request">350</property>
+                        <property name="height-request">200</property>
+                        <property name="justification">GTK_JUSTIFY_LEFT</property>
+                        <property name="visible">FALSE</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkLabel" id="is_correct">
+                        <property name="hexpand">FALSE</property>
+                        <property name="vexpand">FALSE</property>
+                        <property name="name">is_correct</property>
+                        <property name="label"></property>
+                        <property name="visible">FALSE</property>
+                        <property name="margin-start">20</property>
+                        <property name="margin-end">20</property>
+                        <property name="margin-top">20</property>
+                        <property name="margin-bottom">20</property>
+						<property name="halign">center</property>
+                        <property name="valign">center</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkBox" id="test_mode_input">
+                        <property name="hexpand">TRUE</property>
+                        <property name="vexpand">FALSE</property>
+                        <property name="name">test_mode_input</property>
+                        <property name="visible">FALSE</property>
+                        <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
+                        <child>
+                            <object class="GtkLabel" id="test_mode_label">
+                                <property name="name">test_mode_label</property>
+                                <property name="label">Your Answer: </property>
+                                <property name="hexpand">FALSE</property>
+                                <property name="vexpand">FALSE</property>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="GtkTextView" id="input2">
+                                <property name="hexpand">TRUE</property>
+                                <property name="vexpand">FALSE</property>
+                                <property name="wrap-mode">GTK_WRAP_WORD</property>
+                                <property name="halign">center</property>
+                                <property name="name">input2</property>
+                                <property name="justification">GTK_JUSTIFY_LEFT</property>
+                                <property name="margin-start">20</property>
+                                <property name="margin-end">20</property>
+                                <property name="margin-top">20</property>
+                                <property name="margin-bottom">20</property>
+                                <property name="width-request">350</property>
+                                <property name="height-request">75</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkBox" id="buttons">
+                        <property name="hexpand">TRUE</property>
+                        <property name="vexpand">FALSE</property>
+                        <property name="orientation">GTK_ORIENTATION_HORIZONTAL</property>
+                        <property name="name">buttons</property>
+                        <property name="visible">FALSE</property>
+                        <child>
+                            <object class="GtkButton" id="next">
+                        		<property name="label">Next Flashcard</property>
+                        		<property name="hexpand">TRUE</property>
+                        		<property name="vexpand">FALSE</property>
+                        		<property name="name">next</property>
+                        		<signal name="clicked" handler="next_flashcard"/>
+                    		</object>
+                        </child>
+						<child>
+							<object class="GtkButton" id="sw_face">
+                        		<property name="label">Switch to back face </property>
+                        		<property name="hexpand">TRUE</property>
+                        		<property name="vexpand">FALSE</property>
+                        		<property name="name">sw_face</property>
+                        		<signal name="clicked" handler="sw_face"/>
+                    		</object>
+						</child>
+                        <child>
+                            <object class="GtkButton" id="previous">
+                                <property name="label">Previous flashcard</property>
+                                <property name="hexpand">TRUE</property>
+                                <property name="vexpand">FALSE</property>
+                                <property name="name">previous</property>
+                                <signal name="clicked" handler="previous_flashcard"/>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="GtkButton" id="confirm">
+                                <property name="label">Confirm all</property>
+                                <property name="hexpand">TRUE</property>
+                                <property name="vexpand">FALSE</property>
+                                <property name="name">confirm</property>
+                                <signal name="clicked" handler="confirm_all"/>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkButton" id="check_answ">
+                                <property name="label">Check Answer</property>
+                                <property name="hexpand">TRUE</property>
+                                <property name="vexpand">FALSE</property>
+                                <property name="name">check_answ</property>
+                                <signal name="clicked" handler="check_answ_impl"/>
+                                <property name="visible">FALSE</property>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="GtkButton" id="skip">
+                                <property name="label">Skip to next flashcard</property>
+                                <property name="hexpand">TRUE</property>
+                                <property name="vexpand">FALSE</property>
+                                <property name="name">skip</property>
+                                <signal name="clicked" handler="skip_impl"/>
+                                <property name="visible">FALSE</property>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="GtkButton" id="back">
+                                <property name="label">Back to main menu</property>
+                                <property name="hexpand">TRUE</property>
+                                <property name="vexpand">FALSE</property>
+                                <property name="name">back</property>
+                                <signal name="clicked" handler="back_impl"/>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+            </object>
+        </child>
+    </object>
+</interface>

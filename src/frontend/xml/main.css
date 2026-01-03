@@ -1,0 +1,76 @@
+#root_box {
+    background-image: url("resource:///com/example/flashcard/flashcard3.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#input {
+    background-color: lightgray;
+    /* border: 1px solid #888; */
+    font-size: x-large;
+    font-weight: normal;
+    padding: 8px;
+    /* color: rgba(0, 0, 0, 0); */
+}
+
+#input2 {
+    padding: 2px;
+}
+
+#flashcard_id {
+    background-color: darkgray;
+    font-size: larger;
+    font-weight: bold;
+    padding: 8px;
+    border: 4px;
+}
+
+#next {
+    font-weight: bold;
+}
+
+#sw_face {
+    font-weight: bold;
+}
+
+#previous {
+    font-weight: bold;
+}
+
+#confirm {
+    font-weight: bold;
+}
+
+#back {
+    font-weight: bold;
+}
+
+#new_set {
+    padding: 16px;
+}
+
+#load_set {
+    padding: 16px;
+}
+
+#exit {
+    padding: 16px;
+}
+
+#check_answ {
+    font-weight: bold;
+}
+
+#skip {
+    font-weight: bold;
+}
+
+#test_mode_label {
+    font-weight: bold;
+    font-size: large;
+}
+
+#is_correct {
+    font-weight: bold;
+    font-size: large;
+}

@@ -1,0 +1,5 @@
+*.o
+*.exe
+/out/
+/ucrt64/
+!*.tar.xz

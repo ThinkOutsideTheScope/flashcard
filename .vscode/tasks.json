@@ -1,0 +1,41 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "exec_test",
+            "type": "shell",
+            "dependsOn": [
+                "run"
+            ],
+        },
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "x86_64-w64-mingw32-make",
+            "group": "build",
+            "presentation": {
+                "reveal": "always"
+            }
+        },
+        {
+            "label": "run",
+            "type": "shell",
+            "command": "GDK_BACKEND=\"win32\" GSK_RENDERER=\"cairo\" wine out/flashcard.exe",
+            "dependsOn": [ "build" ],
+            "group": "build"
+        },
+        {
+            "label": "rebuild",
+            "type": "shell",
+            "command": "x86_64-w64-mingw32-make -B",
+            "group": "build"
+        },
+        {
+            "label": "rebuild-run",
+            "type": "shell",
+            "command": "GDK_BACKEND=\"win32\" GSK_RENDERER=\"cairo\" wine out/flashcard.exe",
+            "dependsOn": [ "rebuild" ],
+            "group": "build"
+        }
+    ]
+}
