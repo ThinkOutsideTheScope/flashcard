@@ -28,6 +28,17 @@ extern "C" G_MODULE_EXPORT void next_flashcard(GtkButton* button, gpointer data)
 		return;
 	}
 	is_back = FALSE;
+	GtkWidget* parent = gtk_widget_get_parent(GTK_WIDGET(button));
+	GtkWidget* child = gtk_widget_get_first_child(parent);
+
+	while (child) {
+		if (g_strcmp0(gtk_widget_get_name(child), "sw_face") == 0) {
+			gtk_button_set_label(GTK_BUTTON(child), "Switch to back face ");
+			break;
+		}
+		child = gtk_widget_get_next_sibling(child);
+	}
+
 	if (current_flashcard_num-1 >= flashcards.size() || current_flashcard_num >= flashcards.size()) {
 		flashcards.push_back(current);
 		current.front = gtk_text_buffer_new(NULL);
