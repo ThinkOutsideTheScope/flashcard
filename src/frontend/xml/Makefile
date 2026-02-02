@@ -21,7 +21,7 @@ out/%.c: %.gresource.xml
 	@$(GLIB_CC_RESOURCE) $(GLIB_CC_FLAGS) $^ --target=$@
 out/%.o: out/%.c
 	@echo "CC $^ -> $@"
-	$(CC) $(CFLAGS) $(CFLAGS_EXT) -c $^ -o $@
+	@$(CC) $(CFLAGS) $(CFLAGS_EXT) -c $^ -o $@
 clean:
 	@echo "RM out"
 	@rm -rf out

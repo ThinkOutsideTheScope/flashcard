@@ -369,7 +369,6 @@ void next_impl(GtkButton* button) {
 				} else gtk_widget_set_visible(root_child, FALSE);
 				root_child = gtk_widget_get_next_sibling(root_child);
 			}
-			
 		}
 	} else {
 		current.front = flashcards[current_flashcard_num++].front;
@@ -452,8 +451,21 @@ extern "C" G_MODULE_EXPORT void back_impl(GtkButton* button, gpointer data) {
 		if (g_strcmp0(gtk_widget_get_name(root_child), "new_set") == 0 || g_strcmp0(gtk_widget_get_name(root_child), "load_set") == 0 || g_strcmp0(gtk_widget_get_name(root_child), "exit") == 0) {
 			gtk_widget_set_visible(root_child, TRUE);
 		} else gtk_widget_set_visible(root_child, FALSE);
+		gtk_text_view_set_buffer(input2, gtk_text_buffer_new(NULL));
+		if (g_strcmp0(gtk_widget_get_name(root_child), "buttons") == 0) {
+			GtkWidget* buttons_child = gtk_widget_get_first_child(root_child);
+			while (buttons_child) {
+				if (g_strcmp0(gtk_widget_get_name(buttons_child), "check_answ") == 0) {
+					gtk_button_set_label(GTK_BUTTON(buttons_child), "Check Answer");
+					chk_answ_btn_label_is_NEXT = false;
+				}
+				buttons_child = gtk_widget_get_next_sibling(buttons_child);
+			}
+			GtkButton* next = (GtkButton*)root_child;
+		}
 		root_child = gtk_widget_get_next_sibling(root_child);
 	}
+	accuracy_per_flashcard.clear();
 }
 
 extern "C" G_MODULE_EXPORT void exit_impl(GtkButton* button, gpointer data) {
